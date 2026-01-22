@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Budget Tracker</h1>
+        </header>
+
+        <div class="main-content">
+            <!-- Paycheck Overview -->
+            <section class="paycheck-overview">
+                <div class="paycheck-overview-header">
+                    <h2>Current Pay Period</h2>
+                    <form id="paycheck-form" class="compact-form">
+                        <select id="paycheck-date" required>
+                            <option value="1st">1st</option>
+                            <option value="15th">15th</option>
+                        </select>
+                        <input type="number" id="paycheck-amount" step="0.01" min="0" required placeholder="Amount">
+                        <button type="submit">Add</button>
+                    </form>
+                </div>
+                <div class="paycheck-cards">
+                    <div class="paycheck-card" id="paycheck-1st">
+                        <div class="paycheck-header">
+                            <h3>1st Paycheck</h3>
+                            <span class="paycheck-date" id="date-1st"></span>
+                        </div>
+                        <div class="paycheck-amount">
+                            <span class="label">Available:</span>
+                            <span class="amount" id="available-1st">$0.00</span>
+                        </div>
+                        <div class="paycheck-details">
+                            <div class="detail-item">
+                                <span>Income:</span>
+                                <span id="income-1st">$0.00</span>
+                            </div>
+                            <div class="detail-item">
+                                <span>Recurring:</span>
+                                <span id="recurring-1st">-$0.00</span>
+                            </div>
+                            <div class="detail-item">
+                                <span>One-time:</span>
+                                <span id="onetime-1st">-$0.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="paycheck-card" id="paycheck-15th">
+                        <div class="paycheck-header">
+                            <h3>15th Paycheck</h3>
+                            <span class="paycheck-date" id="date-15th"></span>
+                        </div>
+                        <div class="paycheck-amount">
+                            <span class="label">Available:</span>
+                            <span class="amount" id="available-15th">$0.00</span>
+                        </div>
+                        <div class="paycheck-details">
+                            <div class="detail-item">
+                                <span>Income:</span>
+                                <span id="income-15th">$0.00</span>
+                            </div>
+                            <div class="detail-item">
+                                <span>Recurring:</span>
+                                <span id="recurring-15th">-$0.00</span>
+                            </div>
+                            <div class="detail-item">
+                                <span>One-time:</span>
+                                <span id="onetime-15th">-$0.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Payments Section -->
+            <div class="payments-container">
+                <!-- Recurring Payments -->
+                <section class="form-section">
+                    <h2>Recurring Payments</h2>
+                    <form id="recurring-form">
+                        <div class="form-group">
+                            <label for="recurring-name">Name:</label>
+                            <input type="text" id="recurring-name" required placeholder="e.g., Netflix">
+                        </div>
+                        <div class="form-group">
+                            <label for="recurring-amount">Amount:</label>
+                            <input type="number" id="recurring-amount" step="0.01" min="0" required placeholder="0.00">
+                        </div>
+                        <div class="form-group">
+                            <label for="recurring-paycheck">Deduct from:</label>
+                            <select id="recurring-paycheck" required>
+                                <option value="1st">1st Paycheck</option>
+                                <option value="15th">15th Paycheck</option>
+                                <option value="both">Both Paychecks</option>
+                            </select>
+                        </div>
+                        <button type="submit">Add Recurring Payment</button>
+                    </form>
+                    <div class="list-container">
+                        <h3>Active Recurring Payments</h3>
+                        <ul id="recurring-list"></ul>
+                    </div>
+                </section>
+
+                <!-- One-time Payments -->
+                <section class="form-section">
+                    <h2>One-time Payments</h2>
+                    <form id="onetime-form">
+                        <div class="form-group">
+                            <label for="onetime-name">Name:</label>
+                            <input type="text" id="onetime-name" required placeholder="e.g., Groceries">
+                        </div>
+                        <div class="form-group">
+                            <label for="onetime-amount">Amount:</label>
+                            <input type="number" id="onetime-amount" step="0.01" min="0" required placeholder="0.00">
+                        </div>
+                        <div class="form-group">
+                            <label for="onetime-paycheck">Deduct from:</label>
+                            <select id="onetime-paycheck" required>
+                                <option value="1st">1st Paycheck</option>
+                                <option value="15th">15th Paycheck</option>
+                            </select>
+                        </div>
+                        <button type="submit">Add Payment</button>
+                    </form>
+                    <div class="list-container">
+                        <h3>One-time Payments</h3>
+                        <ul id="onetime-list"></ul>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Notes Section -->
+            <section class="form-section">
+                <h2>Notes</h2>
+                <form id="notes-form">
+                    <div class="form-group">
+                        <label for="note-text">Add Note:</label>
+                        <textarea id="note-text" rows="3" required placeholder="Enter your note here..."></textarea>
+                    </div>
+                    <button type="submit">Add Note</button>
+                </form>
+                <div class="list-container">
+                    <h3>Your Notes</h3>
+                    <ul id="notes-list"></ul>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
